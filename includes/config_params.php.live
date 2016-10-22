@@ -1,0 +1,78 @@
+<?php
+/**
+ * @author Steve Shaw
+ * @copyright 2008
+ */
+
+/** Note: SITE_ROOT and environment flag are set in locator.php **/
+
+/** define logging settings */
+define("LOG_FILE", SITE_ROOT."/html/logs/mightyLog");
+/** turn on automatic error logging */
+ini_set('log_errors', true);
+/** set log file */
+date_default_timezone_set('America/Los_Angeles');
+define("LOG_FILE_NAME_DATE", "Y-m-d");
+ini_set('error_log', LOG_FILE.date(LOG_FILE_NAME_DATE, time()).".log");
+
+/** define database, paypal, and error logging settings */
+if (IS_LOCAL) {
+	define("LOCATION_SITE", "http://mightyultimate.local/");
+	define("SECURE_LOCATION_SITE", "http://mightyultimate.local/");
+	define("DB_HOST", "localhost");
+	define("DB_NAME", "mightyultimate");
+	define("DB_USER", "layout");
+	define("DB_PASS", "55hammer");
+	define("PAYPAL_ENV", "sandbox.");
+	define("IPN_RETURN_URL",SECURE_LOCATION_SITE."paypal/IPNHandler.php");
+	define("MU_PAYPAL_EMAIL","mutest00@gmail.com");
+	ini_set('display_errors', false);
+	ini_set('error_reporting', E_ALL);
+} else if (IS_TEST) { 
+	define("LOCATION_SITE", "http://test.mightyultimate.com/");
+	define("SECURE_LOCATION_SITE", "https://test.mightyultimate.com/");
+	//define("DB_HOST", $_ENV['DATABASE_SERVER']);
+	/** need to explicitly get host name this way because $_ENV is only good for public web 
+     *  pages which does no good when this page is called by cron for the rss feed processing
+	 */
+	define("DB_HOST", "internal-db.s63137.gridserver.com");
+	define("DB_NAME", "db63137_mu_test");
+	define("DB_USER", "db63137_muman_t");
+	define("DB_PASS", "44scoober!");
+	define("PAYPAL_ENV", "sandbox.");
+	define("IPN_RETURN_URL",SECURE_LOCATION_SITE."paypal/IPNHandler.php");
+	define("MU_PAYPAL_EMAIL","mutest00@gmail.com");
+	ini_set('display_errors', true);
+	ini_set('error_reporting', E_ALL ^ E_NOTICE);
+} else {
+	define("LOCATION_SITE", "http://mightyultimate.com/");
+	define("SECURE_LOCATION_SITE", "https://mightyultimate.com/");
+	//define("DB_HOST", $_ENV['DATABASE_SERVER']);
+	/** need to explicitly get host name this way because $_ENV is only good for public web 
+     *  pages which does no good when this page is called by cron for the rss feed processing
+	 */
+	define("DB_HOST", "internal-db.s63137.gridserver.com");
+	define("DB_NAME", "db63137_mu");
+	define("DB_USER", "db63137_muman");
+	define("DB_PASS", "44poached!");
+	define("PAYPAL_ENV", "");
+	define("IPN_RETURN_URL",SECURE_LOCATION_SITE."paypal/IPNHandler.php");
+	define("MU_PAYPAL_EMAIL","payments@mightyultimate.com");
+	ini_set('display_errors', false);
+}
+
+/** define event setup fee that MU charges to organizers */
+define("EVENT_SETUP_FEE", 10.00);
+
+/** define email settings */
+define("EMAIL_INFO_ADDRESS", "info@mightyultimate.com");
+define("EMAIL_SUPPORT_ADDRESS", "support@mightyultimate.com");
+define("EMAIL_DIRECTOR_ADDRESS", "director@mightyultimate.com");
+define("EMAIL_LEGAL_ADDRESS", "legal@mightyultimate.com");
+define("EMAIL_WORK_ADDRESS", "sshaw@ffic.com");
+
+/** define general settings */
+define("ORG_NAME", "Mighty Ultimate Disc");
+/** define timezone used to store sensitive datetime values */
+define("GMT_TIMEZONE_ID", "Europe/London");
+?>

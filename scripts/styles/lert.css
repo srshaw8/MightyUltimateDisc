@@ -1,0 +1,74 @@
+#lertOverlay{
+	background-color: #000000;
+	height: 500px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 90;
+	filter:alpha(opacity=10);
+	-moz-opacity: 0.1;
+	opacity: 0.1;
+}
+
+#lertContainer{
+	left: 0;
+	position: absolute;
+	text-align: center;
+	top: 40px;
+	width: 100%;
+	z-index: 100;
+}
+
+#lertWindow {
+	background: #FFFFFF url(images/grad.gif) top left repeat-x;
+	border: 2px solid #4F6135;
+	margin: 0 auto;
+	padding: 1px;
+	width: 30%;
+}
+
+#lertMessage {
+	clear: right;
+	font-weight: normal;
+	font-size: 11px;
+	font-family: verdana, arial, sans-serif;
+	margin-left: 52px;
+	padding-bottom: 15px;
+	text-align: left;
+	width: 80%;
+}
+
+#lertIcon {
+	float: left;
+	padding: 10px;
+}
+
+#lertButtons {
+	clear: both;
+	margin-bottom: 5px;
+	text-align: right;
+}
+
+.lertButton {
+	/*background: #EC7500;*/
+	background-image: url(/images/button_lert.jpg);
+	border: 0px;
+	color: #FFFFFF;	
+	font: normal 11px/10px verdana, arial, sans-serif;
+	height: 20px;
+	margin: 0px 5px 0px 0px;
+	padding: 1px 7px 1px 7px;
+	text-decoration: none;
+}
+
+.lertButton:hover {
+	/*background: #EC7500;*/
+	background-image: url(/images/button_lert_alt.jpg);
+	margin: 0px 5px 0px 0px;
+	padding: 1px 7px 1px 7px;
+}
+
+#lertDefaultButton {
+	font-weight: normal;
+}
